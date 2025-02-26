@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Aseguramos que html y body ocupen todo el espacio disponible */
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+/* Contenedor principal */
+.container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Contenedor del mapa */
+.map-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: none;
+}
+
+/* El mapa en sí */
+#map {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Estilo para los marcadores personalizados */
+.custom-marker {
+  border: 2px solid rgb(0, 255, 4);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 255, 4, 0.5);
+}
+
+/* Personalización del hotspot */
+.pannellum-hotspot {
+  background-image: url('assets/img/iconos/arrow.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 40px; /* Ajusta el tamaño del hotspot */
+  height: 40px;
+  border-radius: 50%; /* Si deseas hacerlo redondo */
+  filter: invert(1);
+  position: relative;
+  animation: glow 1.5s ease-in-out infinite; /* Animación de resplandor */
+  opacity: 1; /* Asegura que el hotspot sea visible inicialmente */
+  visibility: visible; /* Asegura que sea visible */
+  transition: opacity 0.3s, visibility 0.3s; /* Transición para el desvanecimiento */
+}
+
+/* Animación de resplandor */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 20px 8px rgba(255, 255, 255, 1);
+  }
+  100% {
+    box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.7);
+  }
+}

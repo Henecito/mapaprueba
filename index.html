@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/img/ico/cmpc-logo.ico">
+  <title>CMPC Planta Santa Fe</title>
+  <link href="styles.css" rel="stylesheet">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.0/mapbox-gl.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css">
+</head>
+
+<body>
+  <!-- Contenedor del mapa -->
+  <div class="container">
+    <div class="map-container">
+      <div id="map"></div>
+    </div>
+  </div>
+
+  <!-- Modal para las imágenes 360 -->
+  <div class="modal" id="modal360">
+    <div class="modal-content" id="visor360"></div>
+    <span class="close" id="closeModal"></span>
+  </div>
+
+  <!-- Scripts necesarios -->
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.0/mapbox-gl.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
+  <script src="hotspots.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
+
+
