@@ -945,6 +945,7 @@ window.puntos = [
             "image": './assets/img/iconos/arrow.png',
             "nextImage": './assets/img/360/SantaFe/Pulpa1.JPG' 
           },
+          
         ]
       },
       {
@@ -1602,12 +1603,28 @@ window.puntos = [
           {
             "pitch": -2.35,
             "yaw": -9.46,
-            "type": "info",
-            "text": "Avanzar",
-            "div": {},
-            "image": './assets/img/iconos/arrow.png',
-            "nextImage": './assets/img/360/SantaFe/CalderaSF2/2.JPG',
-          },       
+            "type": "dropdown",
+            "text": "Seleccionar Piso",
+            "floors": [
+              { "name": "Piso 0", "image": "./assets/img/360/SantaFe/CalderaSF2/2.JPG" },
+              { "name": "Piso 1", "image": "./assets/img/360/SantaFe/CalderaSF2/14.JPG" },
+              { "name": "Piso 2", "image": "./assets/img/360/SantaFe/CalderaSF2/15.JPG" },
+              { "name": "Piso 3", "image": "./assets/img/360/SantaFe/CalderaSF2/16.JPG" },
+              { "name": "Piso 4", "image": "./assets/img/360/SantaFe/CalderaSF2/17.JPG" },
+              { "name": "Piso 5", "image": "./assets/img/360/SantaFe/CalderaSF2/18.JPG" },
+              { "name": "Piso 6", "image": "./assets/img/360/SantaFe/CalderaSF2/19.JPG" },
+              { "name": "Piso 7", "image": "./assets/img/360/SantaFe/CalderaSF2/20.JPG" },
+              { "name": "Piso 8", "image": "./assets/img/360/SantaFe/CalderaSF2/21.JPG" },
+              { "name": "Piso 9", "image": "./assets/img/360/SantaFe/CalderaSF2/22.JPG" },
+              { "name": "Piso 10", "image": "./assets/img/360/SantaFe/CalderaSF2/23.JPG" },
+              { "name": "Piso 11", "image": "./assets/img/360/SantaFe/CalderaSF2/24.JPG" },
+              { "name": "Piso 12", "image": "./assets/img/360/SantaFe/CalderaSF2/25.JPG" },
+              { "name": "Piso 13", "image": "./assets/img/360/SantaFe/CalderaSF2/26.JPG" },
+              { "name": "Piso 14", "image": "./assets/img/360/SantaFe/CalderaSF2/27.JPG" },
+              { "name": "Piso 15", "image": "./assets/img/360/SantaFe/CalderaSF2/28.JPG" },
+              { "name": "Piso 16", "image": "./assets/img/360/SantaFe/CalderaSF2/29.JPG" },
+            ]
+          }       
         ]
       },
       {
@@ -4211,30 +4228,124 @@ window.puntos = [
         ]
       },
 // Caldera Recuperado Santa Fé 2
-      {
-        name: 'CalderaSF2 Piso 0',
-        coordinates: [-72.64994478, -37.51710132],
-        image: './assets/img/360/SantaFe/CalderaSF2/2.JPG',
-        hotspots: [
-          {
-            "pitch": -2.06,
-            "yaw": 177.95,
-            "type": "info",
-            "text": "Avanzar",
-            "div": {},
-            "image": './assets/img/iconos/arrow.png',  
-            "nextImage": './assets/img/360/SantaFe/30.JPG' 
-          },
-          {
-            "pitch": -3.04,
-            "yaw": 148.4,
-            "type": "info",
-            "text": "Avanzar",
-            "div": {},
-            "image": './assets/img/iconos/arrow.png',  
-            "nextImage": './assets/img/360/SantaFe/Pulpa/Pulpa2.JPG' 
-          },
-        ]
-      },
-  ];
+{
+  name: 'CalderaSF2 Piso 0',
+  coordinates: [0, 0],
+  image: './assets/img/360/SantaFe/CalderaSF2/2.JPG',
+  hotspots: [
+  ]
+},
+{
+  name: 'CalderaSF2 Piso 1',
+  coordinates: [0, 0],
+  image: './assets/img/360/SantaFe/CalderaSF2/14.JPG',
+  hotspots: [
+  ]
+},
+{
+  name: 'CalderaSF2 Piso 2',
+  coordinates: [0, 0],
+  image: './assets/img/360/SantaFe/CalderaSF2/15.JPG',
+  hotspots: [
+  ]
+},
+{
+  name: 'CalderaSF2 Piso 3',
+  coordinates: [0, 0],
+  image: './assets/img/360/SantaFe/CalderaSF2/16.JPG',
+  hotspots: [
+  ]
+},
+{
+  name: 'CalderaSF2 Piso 4',
+  coordinates: [0, 0],
+  image: './assets/img/360/SantaFe/CalderaSF2/17.JPG',
+  hotspots: [
+  ]
+},
+{
+  name: 'CalderaSF2 Piso 5',
+  coordinates: [0, 0],
+  image: './assets/img/360/SantaFe/CalderaSF2/18.JPG',
+  hotspots: [
+  ]
+},
+{
+  name: 'CalderaSF2 Piso 6',
+  coordinates: [0, 0],
+  image: './assets/img/360/SantaFe/CalderaSF2/19.JPG',
+  hotspots: [
+  ]
+},
+{
+  name: 'CalderaSF2 Piso 7',
+  coordinates: [0, 0],
+  image: './assets/img/360/SantaFe/CalderaSF2/20.JPG',
+  hotspots: [
+  ]
+},
+{
+  name: 'CalderaSF2 Piso 8',
+  coordinates: [0, 0],
+  image: './assets/img/360/SantaFe/CalderaSF2/21.JPG',
+  hotspots: [
+  ]
+},
+{
+  name: 'CalderaSF2 Piso 9',
+  coordinates: [0, 0],
+  image: './assets/img/360/SantaFe/CalderaSF2/22.JPG',
+  hotspots: [
+  ]
+},
+{
+  name: 'CalderaSF2 Piso 10',
+  coordinates: [0, 0],
+  image: './assets/img/360/SantaFe/CalderaSF2/23.JPG',
+  hotspots: [
+  ]
+},
+{
+  name: 'CalderaSF2 Piso 11',
+  coordinates: [0, 0],
+  image: './assets/img/360/SantaFe/CalderaSF2/24.JPG',
+  hotspots: [
+  ]
+},
+{
+  name: 'CalderaSF2 Piso 12',
+  coordinates: [0, 0],
+  image: './assets/img/360/SantaFe/CalderaSF2/25.JPG',
+  hotspots: [
+  ]
+},
+{
+  name: 'CalderaSF2 Piso 13',
+  coordinates: [0, 0],
+  image: './assets/img/360/SantaFe/CalderaSF2/26.JPG',
+  hotspots: [
+  ]
+},
+{
+  name: 'CalderaSF2 Piso 14',
+  coordinates: [0, 0],
+  image: './assets/img/360/SantaFe/CalderaSF2/27.JPG',
+  hotspots: [
+  ]
+},
+{
+  name: 'CalderaSF2 Piso 15',
+  coordinates: [0, 0],
+  image: './assets/img/360/SantaFe/CalderaSF2/28.JPG',
+  hotspots: [
+  ]
+},
+{
+  name: 'CalderaSF2 Piso 16',
+  coordinates: [0, 0],
+  image: './assets/img/360/SantaFe/CalderaSF2/29.JPG',
+  hotspots: [
+  ]
+},
+]
   

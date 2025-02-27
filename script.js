@@ -69,49 +69,111 @@ document.body.appendChild(modal);
 let markers = [];
 let currentViewer = null; // Para mantener la referencia del visor actual
 
-// Función para cargar el panorama y sus hotspots
 function loadPanorama(punto) {
-  // Si ya hay un visor cargado, destrúyelo antes de cargar uno nuevo
   if (currentViewer) {
-    currentViewer.destroy(); // Destruir el visor anterior
-    currentViewer = null; // Limpiar la referencia
+    currentViewer.destroy();
+    currentViewer = null;
   }
 
-  // Cargar el panorama actual con sus hotspots
   currentViewer = pannellum.viewer("panoramaViewer", {
     type: "equirectangular",
     panorama: punto.image,
     autoLoad: true,
     compass: false,
-    hotSpots: punto.hotspots.map((hotspot) => ({
-      pitch: hotspot.pitch,
-      yaw: hotspot.yaw,
-      text: hotspot.text,
-      createTooltipFunc: hotspot.createTooltipFunc,
-      clickHandlerFunc: () => {
-        // Llamar a la función loadPanorama cuando se haga clic en un hotspot
-        if (hotspot.nextImage) {
-          // Encontrar el siguiente punto
-          const nextPunto = window.puntos.find(
-            (p) => p.image === hotspot.nextImage
-          ); // Buscar el siguiente punto usando la imagen
-          if (nextPunto) {
-            loadPanorama(nextPunto); // Cargar el siguiente panorama como un nuevo evento
-          } else {
-            alert("No hay más puntos.");
-          }
-        } else {
-          // Si no hay siguiente imagen, puedes mostrar el mensaje o cerrar el modal
-          alert("No hay más imágenes.");
-        }
-      },
-      cssClass: "pannellum-hotspot",
-    })),
+    hotSpots: punto.hotspots.map((hotspot) => {
+      if (hotspot.type === "dropdown") {
+        return {
+            pitch: hotspot.pitch,
+            yaw: hotspot.yaw,
+            createTooltipFunc: (hotSpotDiv) => {
+                // Crear el icono del hotspot
+                const hotspotIcon = document.createElement("img");
+                hotspotIcon.src = "./assets/img/iconos/arrow.png"; // Icono del hotspot
+                hotspotIcon.style.width = "40px";
+                hotspotIcon.style.cursor = "pointer";
+                hotspotIcon.style.position = "relative";
+                hotspotIcon.style.zIndex = "1001"; // Asegura que esté encima
+    
+                // Crear el contenedor del dropdown (oculto por defecto)
+                const dropdownContainer = document.createElement("div");
+                dropdownContainer.style.display = "none"; // Oculto al inicio
+                dropdownContainer.style.position = "absolute";
+                dropdownContainer.style.bottom = "50px"; // Para que aparezca arriba del hotspot
+                dropdownContainer.style.left = "-55px"; // Ajuste de posición horizontal
+                dropdownContainer.style.background = "white";
+                dropdownContainer.style.padding = "5px";
+                dropdownContainer.style.border = "1px solid #ccc";
+                dropdownContainer.style.borderRadius = "5px";
+                dropdownContainer.style.boxShadow = "0px 4px 6px rgba(0,0,0,0.2)";
+                dropdownContainer.style.zIndex = "1002"; // Para que esté sobre otros elementos
+    
+                // Crear el dropdown
+                dropdownContainer.innerHTML = `
+                  <select id="floorSelector" class="hotspot-dropdown">
+                    <option value="">Selecciona un Piso</option>
+                    ${hotspot.floors.map(floor => `<option value="${floor.image}">${floor.name}</option>`).join('')}
+                  </select>
+                `;
+    
+                // Mostrar el dropdown al hacer clic en el hotspot
+                hotspotIcon.addEventListener("click", (event) => {
+                    event.stopPropagation(); // Evita que el clic se propague al documento
+                    dropdownContainer.style.display = dropdownContainer.style.display === "none" ? "block" : "none";
+                });
+    
+                // Cerrar el dropdown si se hace clic fuera de él
+                document.addEventListener("click", (event) => {
+                    if (!hotSpotDiv.contains(event.target)) {
+                        dropdownContainer.style.display = "none";
+                    }
+                });
+    
+                // Cambiar de piso al seleccionar una opción
+                dropdownContainer.querySelector("#floorSelector").addEventListener("change", function () {
+                    const selectedImage = this.value;
+                    if (selectedImage) {
+                        const nextPunto = window.puntos.find(p => p.image === selectedImage);
+                        if (nextPunto) {
+                            loadPanorama(nextPunto);
+                            dropdownContainer.style.display = "none"; // Ocultar el dropdown después de seleccionar
+                        } else {
+                            alert("Piso no encontrado.");
+                        }
+                    }
+                });
+    
+                // Agregar el icono y el dropdown al hotspot
+                hotSpotDiv.appendChild(hotspotIcon);
+                hotSpotDiv.appendChild(dropdownContainer);
+            },
+            cssClass: "pannellum-hotspot"
+        };
+      } else {
+        return {
+          pitch: hotspot.pitch,
+          yaw: hotspot.yaw,
+          text: hotspot.text,
+          createTooltipFunc: hotspot.createTooltipFunc,
+          clickHandlerFunc: () => {
+            if (hotspot.nextImage) {
+              const nextPunto = window.puntos.find(p => p.image === hotspot.nextImage);
+              if (nextPunto) {
+                loadPanorama(nextPunto);
+              } else {
+                alert("No hay más puntos.");
+              }
+            }
+          },
+          cssClass: "pannellum-hotspot"
+        };
+      }
+    }),
     onLoad: () => {
       console.log("Imagen cargada y hotspots aplicados correctamente.");
     }
   });
 }
+
 
 document.addEventListener("DOMContentLoaded", () => {
   if (window.puntos) {
